@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const places = require('../models/Places.js')
+const places = require('../models/placeData.js')
 
 router.get('/', function (req, res) {
     res.render('places/index', { places })
@@ -23,6 +23,11 @@ router.get('/:id/edit', function(req,res){
     } else {
         res.render('places/edit', places[req.params.id])
     }
+})
+
+router.post('/', function(req,res){
+    console.log(req.body)
+    res.send('POST /places')
 })
 
 module.exports = router

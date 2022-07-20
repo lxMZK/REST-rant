@@ -1,23 +1,25 @@
 const router = require('express').Router()
 const places = require('../models/placeData.js')
+const states = require('../models/states.js')
 
 router.get('/', function (req, res) {
     res.render('places/index', { places })
 })
 
-router.get('/new', function(req,res){
-    res.render('places/new')
+router.get('/new', function (req, res) {
+    res.render('places/new', { states })
 })
 
-router.get('/:id', function(req,res){
-    if (req.params.id >= places.length) {
+router.get('/:id', function (req, res) {
+    let id = Number(req.params.id)
+    if (isNaN(id) || !places[id]) {
         res.render('error404')
     } else {
-        res.render('places/details', places[req.params.id])
+        res.render('places/show', { place: places[id], id })
     }
 })
 
-router.get('/:id/edit', function(req,res){
+router.get('/:id/edit', function (req, res) {
     if (req.params.id >= places.length) {
         res.render('error404')
     } else {
@@ -25,7 +27,7 @@ router.get('/:id/edit', function(req,res){
     }
 })
 
-router.post('/', function(req,res){
+router.post('/', function (req, res) {
     if (!req.body.pic) {
         req.body.pic = 'http://placekitten.com/400/400'
     }
@@ -38,5 +40,20 @@ router.post('/', function(req,res){
     places.push(req.body)
     res.redirect('/places')
 })
+
+router.delete('/:id', (req, res) => {
+    let id = Number(req.params.id)
+    if (isNaN(id)) {
+        res.render('error404')
+    }
+    else if (!places[id]) {
+        res.render('error404')
+    }
+    else {
+        places.splice(id,1)
+        res.redirect('/places')
+    }
+})
+
 
 module.exports = router

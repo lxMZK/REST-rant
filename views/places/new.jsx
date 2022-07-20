@@ -1,7 +1,7 @@
 const React = require('react')
 const Def = require('../default')
 
-function newPlace() {
+function newPlace(data) {
     return (
         <Def>
             <main>
@@ -9,7 +9,7 @@ function newPlace() {
                 <form action="/places" method='POST'>
                     <div className='form-group'>
                         <label htmlFor="name">Place Name</label>
-                        <input className='form-control' type="text" id='name' name='name'required />
+                        <input className='form-control' type="text" id='name' name='name' required />
                     </div>
                     <div className='form-group'>
                         <label htmlFor="pic">Place Picture</label>
@@ -21,13 +21,13 @@ function newPlace() {
                     </div>
                     <div className='form-group'>
                         <label htmlFor="state">State</label>
-                        <input className='form-control' type="text" id='state' name='state' />
+                        <select name="state" id="state"></select>
                     </div>
                     <div className='form-group'>
                         <label htmlFor="cuisines">Cuisines</label>
-                        <input className='form-control' type="text" id='cuisines' name='cuisines' required/>
+                        <input className='form-control' type="text" id='cuisines' name='cuisines' required />
                     </div>
-                    <input className='btn btn-primary' type="submit" value='Add Place'/>
+                    <input className='btn btn-primary' type="submit" value='Add Place' />
                 </form>
             </main>
         </Def>

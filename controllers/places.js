@@ -1,5 +1,4 @@
 const router = require('express').Router()
-const places = require('../models/placeData.js')
 const states = require('../models/states.js')
 const db = require('../models')
 
@@ -15,6 +14,7 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
+    console.log(req.body)
     db.Place.create(req.body)
         .then(() => {
             res.redirect('/places')

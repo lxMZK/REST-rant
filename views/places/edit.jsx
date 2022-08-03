@@ -16,28 +16,33 @@ function edit(data) {
                     <div className='row'>
                         <div className='form-group col-sm-6'>
                             <label htmlFor="name">Place Name</label>
-                            <input className='form-control' type="text" id='name' name='name' value={data.place.name} required />
+                            <input className='form-control' type="text" id='name' name='name' defaultValue={data.place.name} required />
                         </div>
                         <div className='form-group col-sm-6'>
                             <label htmlFor="pic">Place Picture</label>
-                            <input className='form-control' type="url" id='pic' value={data.place.pic} name='pic' />
+                            <input className='form-control' type="url" id='pic' defaultValue={data.place.pic} name='pic' />
                         </div>
                     </div>
                     <div className='row'>
                         <div className='form-group col-sm-6'>
                             <label htmlFor="city">City</label>
-                            <input className='form-control' type="text" id='city' name='city' value={data.place.city} />
+                            <input className='form-control' type="text" id='city' name='city' defaultValue={data.place.city} />
                         </div>
                         <div className='form-group col-sm-6'>
                             <label htmlFor="state">State</label>
-                            <select name="state" id="state" value={data.place.state}>{statesFormatted}</select>
+                            <select name="state" id="state" defaultValue={data.place.state}>{statesFormatted}</select>
                         </div>
                     </div>
-                    <div className='form-group'>
+                    <div className='form-group col-sm-6'>
                         <label htmlFor="cuisines">Cuisines</label>
-                        <input className='form-control' type="text" id='cuisines' name='cuisines' value={data.place.cuisines} required />
+                        <input className='form-control' type="text" id='cuisines' name='cuisines' defaultValue={data.place.cuisines} required />
                     </div>
-                    <input className='btn btn-primary' type="submit" value='Add Place' />
+                    <div className='form-group col-sm-6'>
+                        <label htmlFor="founded">Founded</label>
+                        <input className='form-control' id='founded' name='founded' defaultValue={data.place.founded} />
+                    </div>
+                    <br />
+                    <input className='btn btn-primary' type="submit" value='Save Changes' />
                 </form>
             </main>
         </Def>

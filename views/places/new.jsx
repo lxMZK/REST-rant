@@ -35,9 +35,9 @@ function newPlace(data) {
                     </div>
                     <div className="form-group">
                         <label htmlFor="founded">Founded Year</label>
-                        <input className="form-control" id="founded" name="founded" type='number' value={new Date().getFullYear} />
+                        <input className="form-control" id="founded" name="founded" type='text' defaultValue={new Date().getFullYear()} />
                     </div>
-
+                    <br/>
                     <input className='btn btn-primary' type="submit" value='Add Place' />
                 </form>
             </main>
